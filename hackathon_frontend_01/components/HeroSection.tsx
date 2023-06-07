@@ -14,7 +14,7 @@ const HeroSection = () => {
           <div className="bg-blue-100 px-5 py-2 rounded mb-7">
             <p className="text-blue-700 font-extrabold"> Sale 70%</p>
           </div>
-          <h1 className="text-5xl font-extrabold leading-tight md:text-6xl tracking-normal">
+          <h1 className="text-4xl font-extrabold leading-tight md:text-5xl tracking-normal">
             An Industrial Take
             <br className="hidden sm:inline" />
             on Streetwear
