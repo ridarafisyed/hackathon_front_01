@@ -1,4 +1,5 @@
 import React from "react"
+import { urlForImage } from "@/sanity/lib/image"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
@@ -10,7 +11,8 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
-const Products = () => {
+const Products = ({ products }: any) => {
+  
   return (
     <section className="container mt-5">
       <p className="text-blue-600 font-extrabold uppercase text-xs tracking-wide text-center">
@@ -20,39 +22,23 @@ const Products = () => {
         Checkout What We Have
       </h1>
       <div className="grid grid-cols-3">
-        <Card>
-          <CardHeader>
-            <Avatar>
-              <AvatarImage src="/asserts/product.png" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
+        {products.result.map((product: any, index: number) => (
+          <Card>
+            <CardHeader>
+              <Avatar>
+                <AvatarImage
+                  src={`${urlForImage(product.image && product.image[0])}`}
+                  alt={product.name}
+                />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
 
-            <CardTitle>Brushed Raglan Sweatshirt</CardTitle>
-            <CardDescription>$195</CardDescription>
-          </CardHeader>
-        </Card>
-        <Card>
-          <CardHeader>
-            <Avatar>
-              <AvatarImage src="/asserts/product2.png" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-
-            <CardTitle>Cameryn Sash Tie Dress</CardTitle>
-            <CardDescription>$545.00</CardDescription>
-          </CardHeader>
-        </Card>
-        <Card>
-          <CardHeader>
-            <Avatar>
-              <AvatarImage src="/asserts/product1.png" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-
-            <CardTitle>Flex Sweatshirt</CardTitle>
-            <CardDescription>$175.00</CardDescription>
-          </CardHeader>
-        </Card>
+              <CardTitle>{product.name}</CardTitle>
+              <CardDescription>${product.price}</CardDescription>
+            </CardHeader>
+          </Card>
+        ))}
+        
       </div>
     </section>
   )

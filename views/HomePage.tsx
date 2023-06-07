@@ -6,12 +6,12 @@ import Products from "@/components/Products"
 import Promotions from "@/components/Promotions"
 import Subscribe from "@/components/Subscribe"
 
-const HomePage = () => {
+const HomePage = ({ products }: any) => {
   return (
     <main className="container">
       <HeroSection />
       <Promotions />
-      <Products />
+      <Products products={products} />
       <Features />
       <Subscribe />
     </main>
