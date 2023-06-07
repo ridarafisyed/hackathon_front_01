@@ -153,7 +153,7 @@ const UpperFooter = () => {
 const LowerFooter = () => {
   return (
     <div className="grid grid-cols-3 gap-5 px-10 py-10 text-md">
-      <p className="">Copyright c 2023 Dine Market</p>
+      <p className="">Copyright &#169; 2023 Dine Market</p>
       <p>
         Design by. <span className="font-bold">Weird Design Studio</span>
       </p>
