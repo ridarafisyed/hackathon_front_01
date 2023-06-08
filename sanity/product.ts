@@ -30,9 +30,34 @@ export default {
       type: "number",
     },
     {
+      name: "gender",
+      title: "Gender",
+      type: "string",
+    },
+    {
+      name: "category",
+      title: "Category",
+      type: "string",
+    },
+    {
+      name: "color",
+      title: "Color",
+      type: "string",
+    },
+    {
       name: "quantity",
       title: "Quantity",
       type: "number",
+    },
+    {
+      name: "protype",
+      title: "Protype",
+      type: "string",
+    },
+    {
+      name: "usage",
+      title: "usage",
+      type: "string",
     },
     {
       name: "details",

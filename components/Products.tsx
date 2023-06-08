@@ -1,4 +1,5 @@
 import React from "react"
+import Link from "next/link"
 import { urlForImage } from "@/sanity/lib/image"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -12,7 +13,6 @@ import {
 } from "@/components/ui/card"
 
 const Products = ({ products }: any) => {
-  
   return (
     <section className="container mt-5">
       <p className="text-blue-600 font-extrabold uppercase text-xs tracking-wide text-center">
@@ -22,23 +22,24 @@ const Products = ({ products }: any) => {
         Checkout What We Have
       </h1>
       <div className="grid grid-cols-3">
-        {products.result.map((product: any, index: number) => (
-          <Card>
-            <CardHeader>
-              <Avatar>
-                <AvatarImage
-                  src={`${urlForImage(product.image && product.image[0])}`}
-                  alt={product.name}
-                />
-                <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
+        {products.map((product: any, index: number) => (
+          <Link href={`/products/${product.slug}`}>
+            <Card className="hover:scale-100 transition">
+              <CardHeader>
+                <Avatar>
+                  <AvatarImage
+                    src={`${urlForImage(product.image)}`}
+                    alt={product.name}
+                  />
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
 
-              <CardTitle>{product.name}</CardTitle>
-              <CardDescription>${product.price}</CardDescription>
-            </CardHeader>
-          </Card>
+                <CardTitle>{product.name}</CardTitle>
+                <CardDescription>${product.price}</CardDescription>
+              </CardHeader>
+            </Card>
+          </Link>
         ))}
-        
       </div>
     </section>
   )
