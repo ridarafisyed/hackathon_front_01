@@ -45,7 +45,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <div className="relative flex min-h-screen flex-col gap-5">
               <SiteHeader />
               <div className="flex-1">{children}</div>
-
               <Footer />
             </div>
             <TailwindIndicator />

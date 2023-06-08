@@ -3,16 +3,16 @@ import Image from "next/image"
 
 const Features = () => {
   return (
-    <div className="container flex my-20 py-20 bg-slate-50 justify-center">
+    <div className="container flex my-20 py-20 bg-slate-50 dark:bg-zinc-900 justify-center">
       <div className="relative my-5 py-5  -z-1 ">
-        <h1 className="text-8xl font-semibold z-10 text-gray-200 text-left">
+        <h1 className="text-8xl font-semibold z-10 text-gray-200 dark:text-zinc-800  text-left">
           Different
           <br /> from <br />
           others
         </h1>
       </div>
       <div className="relative  -z-10">
-        <h1 className="text-8xl font-semibold z-10 text-black top-1/2 text-left">
+        <h1 className="text-8xl font-semibold z-10 text-zinc-800 dark:text-zinc-200 top-1/2 text-left">
           Unique and Authentic Vintage Designer Jewellery
         </h1>
       </div>

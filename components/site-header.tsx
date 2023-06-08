@@ -35,7 +35,7 @@ export function SiteHeader() {
                 <input
                   type="text"
                   id="simple-search"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-300 focus:border-red-300 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
                   placeholder="Search"
                   required
                 />
@@ -46,7 +46,7 @@ export function SiteHeader() {
               target="_blank"
               rel="noreferrer"
             >
-              <div className="bg-red-100 p-2 rounded-full">
+              <div className="bg-red-100 dark:text-red-300 dark:bg-zinc-800 p-2 rounded-full">
                 <ShoppingCart />
                 <span className="sr-only">Shopping Cart</span>
               </div>

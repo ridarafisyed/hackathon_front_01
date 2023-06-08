@@ -23,7 +23,7 @@ const Products = ({ products }: any) => {
       </h1>
       <div className="grid grid-cols-3">
         {products.map((product: any, index: number) => (
-          <Link href={`/products/${product.slug}`}>
+          <Link href={`/products/${product.slug}`} key={index}>
             <Card className="hover:scale-100 transition">
               <CardHeader>
                 <Avatar>

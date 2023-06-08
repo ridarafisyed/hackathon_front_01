@@ -5,7 +5,7 @@ import Link from "next/link"
 const Promotions = () => {
   return (
     <section className="container mt-5 mb-5">
-      <p className="text-blue-600 font-extrabold uppercase text-xs tracking-wide text-center">
+      <p className="text-blue-600  dark:text-blue-400 font-extrabold uppercase text-xs tracking-wide text-center">
         Promotions
       </p>
       <h1 className="font-extrabold text-4xl text-center py-3">
@@ -13,7 +13,7 @@ const Promotions = () => {
       </h1>
       <div className="grid grid-cols-4 gap-4">
         <div className="col-span-2 gap-3">
-          <div className=" bg-gray-300 mb-4 flex">
+          <div className=" bg-gray-300 dark:bg-gray-800 mb-4 flex">
             <div className="p-14">
               <h1 className="font-extrabold text-2xl">
                 GET UP TO <span className="text-3xl">60%</span>
@@ -39,7 +39,7 @@ const Promotions = () => {
             </Link>
           </div>
         </div>
-        <div className="bg-orange-100 pt-5 pl-5">
+        <div className="bg-orange-100 dark:bg-orange-700 pt-5 pl-5">
           <h1>Flex Sweatshirt</h1>
           <p className="font-extrabold">
             <span className="line-through font-light">$100.00 </span>$75.00

@@ -4,7 +4,7 @@ const Subscribe = () => {
   return (
     <div className="container  flex items-center justify-center hi text-center my-20 py-20 ">
       <div className="relative -z-1">
-        <h1 className="text-9xl font-semibold z-10 text-gray-100">
+        <h1 className="text-9xl font-semibold z-10 text-gray-100 dark:text-zinc-800">
           Newsletter
         </h1>
       </div>
