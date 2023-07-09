@@ -1,20 +1,21 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "Dine Market",
-  description: "An Industrial Take on Streetwear",
+  name: "Divine Market",
+  description:
+    "An Industrial Take on Assesories and Footwares for All Men Women and kids",
   mainNav: [
     {
       title: "Female",
-      href: "/products/female",
+      href: "/female",
     },
     {
       title: "Male",
-      href: "/products/male",
+      href: "/male",
     },
     {
       title: "Kids",
-      href: "/products/kids",
+      href: "/kids",
     },
     {
       title: "All Products",
@@ -22,8 +23,8 @@ export const siteConfig = {
     },
   ],
   links: {
-    twitter: "https://twitter.com/shadcn",
-    github: "https://github.com/shadcn/ui",
-    docs: "https://ui.shadcn.com",
+    twitter: "https://twitter.com/ridarafisyed",
+    github: "https://github.com/ridarafisyed",
+    docs: "https://ridarafisyed.com",
   },
 }

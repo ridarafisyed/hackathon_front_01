@@ -14,6 +14,8 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache"
   },
   "dependencies": {
+    "@clerk/clerk-js": "^4.52.1",
+    "@clerk/nextjs": "^4.21.14",
     "@radix-ui/react-avatar": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@sanity/cli": "^3.12.0",
@@ -28,8 +30,10 @@
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
     "sanity": "^3.12.0",
     "sharp": "^0.31.3",
+    "stripe": "^12.9.0",
     "tailwind-merge": "^1.12.0",
     "tailwindcss-animate": "^1.0.5"
   },

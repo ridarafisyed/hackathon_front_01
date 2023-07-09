@@ -1,6 +1,5 @@
 import React from "react"
-import product from "@/sanity/product"
-import { getProduct } from "@/sanity/sanity-utils"
+import { getProduct, getProducts } from "@/sanity/sanity-utils"
 import ProductDetailPage from "@/views/ProductDetailPage"
 
 type Props = {
@@ -9,13 +8,10 @@ type Props = {
 export default async function ProductDetail({ params }: Props) {
   const slug = params.slug
   const product = await getProduct(slug)
+  const products = await getProducts()
   return (
     <div>
-      <ProductDetailPage product={product} />
+      <ProductDetailPage product={product} products={products} />
     </div>
   )
 }
-
-// async function getProduct({ slug }: any) {
-
-// }

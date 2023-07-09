@@ -1,12 +1,12 @@
 import React from "react"
-import { getProducts } from "@/sanity/sanity-utils"
+import { getGenderProducts } from "@/sanity/sanity-utils"
 import ProductsCataloguePage from "@/views/ProductsCataloguePage"
 
-export default async function Products() {
-  const products = await getProducts()
+export default async function KidsProducts() {
+  const products = await getGenderProducts("kids")
+
   return (
     <div>
-      
       <ProductsCataloguePage products={products} />
     </div>
   )

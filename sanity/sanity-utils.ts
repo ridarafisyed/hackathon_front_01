@@ -32,3 +32,20 @@ export async function getProduct(slug: string): Promise<Product> {
     }
   )
 }
+export async function getGenderProducts(gender: string): Promise<Product> {
+  return client.fetch(
+    groq`*[_type == "product" && gender == $gender]{
+    name,
+    details,
+    "image": image[0].asset->url,
+    price,
+    gender,
+    "slug": slug.current,
+    quantity,
+    _createdAt
+  }`,
+    {
+      gender,
+    }
+  )
+}

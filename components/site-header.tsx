@@ -1,4 +1,7 @@
+"use client"
+
 import Link from "next/link"
+import { useStateContext } from "@/context/StateContext"
 import { ShoppingCart } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
@@ -6,6 +9,7 @@ import { MainNav } from "@/components/main-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 export function SiteHeader() {
+  const { totalQuantities } = useStateContext()
   return (
     <header className="top-0 z-40 w-full bg-background px-10 py-5">
       <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
@@ -41,14 +45,14 @@ export function SiteHeader() {
                 />
               </div>
             </form>
-            <Link
-              href={siteConfig.links.twitter}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div className="bg-red-100 dark:text-red-300 dark:bg-zinc-800 p-2 rounded-full">
-                <ShoppingCart />
-                <span className="sr-only">Shopping Cart</span>
+            <Link href={"/cart"} rel="noreferrer">
+              <div className="relative p-2  ">
+                <div className="static">
+                  <ShoppingCart />
+                  <span className="bg-red-700  text-white absolute rounded-full -top-1 -right-1 text-xs py-1 px-2">
+                    {totalQuantities}
+                  </span>
+                </div>
               </div>
             </Link>
             <ThemeToggle />
