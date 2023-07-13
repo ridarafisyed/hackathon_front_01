@@ -35,7 +35,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
-    {/* <ClerkProvider> */}
+
       <html lang="en" suppressHydrationWarning>
         <head />
         <body
@@ -59,7 +59,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           </StateContextProvider>
         </body>
       </html> 
-      {/* </ClerkProvider> */}
+
     </>
   )
 }
