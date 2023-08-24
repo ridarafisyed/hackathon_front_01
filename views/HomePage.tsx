@@ -8,10 +8,10 @@ import Subscribe from "@/components/Subscribe"
 
 const HomePage = ({ products }: any) => {
   return (
-    <main className="container">
+    <div className="container">
       <HeroSection />
-      <Promotions />
-      <section className="container mt-5">
+      {/* <Promotions /> */}
+      {/* <section className="container mt-5">
         <p className="text-blue-600 font-extrabold uppercase text-xs tracking-wide text-center">
           Products
         </p>
@@ -22,8 +22,8 @@ const HomePage = ({ products }: any) => {
       </section>
 
       <Features />
-      <Subscribe />
-    </main>
+      <Subscribe /> */}
+    </div>
   )
 }
 

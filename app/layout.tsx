@@ -48,11 +48,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
             
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
               <Toaster />
-              <div className="relative flex min-h-screen flex-col gap-5">
+              <main className="relative flex min-h-screen flex-col gap-5">
                 <SiteHeader />
                 <div className="flex-1">{children}</div>
                 <Footer />
-              </div>
+              </main>
               <TailwindIndicator />
             </ThemeProvider>
            

@@ -2,62 +2,21 @@
 
 import React from "react"
 import Link from "next/link"
-import { FacebookIcon } from "lucide-react"
+import { Facebook, Linkedin, Twitter } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
 
 const SocialMediaIcon = () => {
   return (
     <div className="flex m-5 mt-5 gap-5">
-      <Link href="" className="bg-zinc-200 rounded-md p-2 mr-2">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="black"
-          stroke="currentColor"
-          strokeWidth="0"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="lucide lucide-facebook"
-        >
-          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-        </svg>
+      <Link href="https://facebook.com/ridarsyed" target="_blank" className="bg-zinc-200 rounded-md p-2 mr-2">
+        <Facebook/>
       </Link>
-      <Link href="" className="bg-zinc-200 rounded-md p-2 mr-2">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="black"
-          stroke="currentColor"
-          strokeWidth="0"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="lucide lucide-linkedin"
-        >
-          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-          <rect width="4" height="12" x="2" y="9" />
-          <circle cx="4" cy="4" r="2" />
-        </svg>
+      <Link href="https://linkedin.com/in/ridarafisyed" target="_blank" className="bg-zinc-200 rounded-md p-2 mr-2">
+        <Linkedin/>
       </Link>
-      <Link href="" className="bg-zinc-200 rounded-md p-2 mr-2">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="black"
-          stroke="currentColor"
-          strokeWidth="0"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="lucide lucide-twitter"
-        >
-          <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-        </svg>
+      <Link href="https://twitter.com/ridarafisyed" target="_blank" className="bg-zinc-200 rounded-md p-2 mr-2">
+        <Twitter/>
       </Link>
     </div>
   )
@@ -65,7 +24,7 @@ const SocialMediaIcon = () => {
 
 const UpperFooter = () => {
   return (
-    <div className="grid grid-cols-5 gap-5  p-5 mb-20 text-md">
+    <div className="grid lg:grid-cols-5 md:grid-cols-2 sm:grid-cols-1 gap-5  p-5 mb-20 text-md">
       <div className="col-span-2">
         <Link href="/" className="flex items-center space-x-2 ml-5  mb-10">
           <svg
@@ -152,7 +111,7 @@ const UpperFooter = () => {
 
 const LowerFooter = () => {
   return (
-    <div className="grid grid-cols-3 gap-5 px-10 py-10 text-md">
+    <div className="grid lg:grid-cols-3 md:grid-cols-1 gap-5 px-10 py-10 text-md">
       <p className="">Copyright &#169; 2023 Dine Market</p>
       <p>
         Design by. <span className="font-bold">Weird Design Studio</span>

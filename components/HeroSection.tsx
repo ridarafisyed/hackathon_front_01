@@ -8,7 +8,7 @@ import { buttonVariants } from "@/components/ui/button"
 
 const HeroSection = () => {
   return (
-    <section className="container items-center flex gap-4 pb-6 mt-8 px-10 md:py-8 md:flex-1">
+    <section className="container items-center flex gap-4 pb-6 p-3 mt-8 px-2 md:py-8 md:flex-1">
       <div className="left-side">
         <div className="flex max-w-[980px] flex-col items-start gap-2 px-10">
           <div className="bg-blue-100 px-5 py-2 rounded mb-7">
@@ -45,7 +45,7 @@ const HeroSection = () => {
           />
         </div>
       </div>
-      <div className="right-side p-4">
+      <div className="hidden xl:block right-side p-4">
         <Image
           className="full-w"
           src="/asserts/header.png"

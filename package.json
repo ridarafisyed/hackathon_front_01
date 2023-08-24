@@ -17,6 +17,7 @@
     "@clerk/clerk-js": "^4.52.1",
     "@clerk/nextjs": "^4.21.14",
     "@radix-ui/react-avatar": "^1.0.3",
+    "@radix-ui/react-navigation-menu": "^1.1.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@sanity/cli": "^3.12.0",
     "@sanity/client": "^6.1.2",
@@ -25,7 +26,7 @@
     "@stripe/stripe-js": "^1.54.1",
     "class-variance-authority": "^0.4.0",
     "clsx": "^1.2.1",
-    "lucide-react": "^0.105.0-alpha.4",
+    "lucide-react": "^0.105.0",
     "next": "^13.4.4",
     "next-sanity": "^4.3.3",
     "next-themes": "^0.2.1",
@@ -35,8 +36,8 @@
     "sanity": "^3.12.0",
     "sharp": "^0.31.3",
     "stripe": "^12.9.0",
-    "tailwind-merge": "^1.12.0",
-    "tailwindcss-animate": "^1.0.5"
+    "tailwind-merge": "^1.14.0",
+    "tailwindcss-animate": "^1.0.6"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
