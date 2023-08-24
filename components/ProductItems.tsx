@@ -28,7 +28,7 @@ const ProductItems = ({ products }: any) => {
               </Avatar>
 
               <CardTitle>{product.name}</CardTitle>
-              <CardDescription>${product.price}</CardDescription>
+              <CardDescription >${product.price}</CardDescription>
             </CardHeader>
           </Card>
         </Link>

@@ -6,6 +6,9 @@ import Link from "next/link"
 import { useStateContext } from "@/context/StateContext"
 import { Minus, Plus, Trash2 } from "lucide-react"
 
+import getStripe from "@/lib/getStripe"
+import { toast } from "react-hot-toast"
+
 const CartItmes = () => {
   const {
     totalPrice,
@@ -14,7 +17,23 @@ const CartItmes = () => {
     toggleCartItemQuantity,
     onRemove,
   } = useStateContext()
-
+  const handleCheckout=async (params:any) => {
+    const stripe = await getStripe();
+    const response = await fetch('/api/stripe',{
+      method:'POST',
+      headers:{
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(cartItems),
+      
+    })
+    if (response.status === 500){
+      return 
+    }
+    const data = await response.json()
+    toast.loading('Redirecting...')
+    stripe.redirectToCheckout({sessionId: data.id});
+  }
   return (
     <section className="container  p-10">
       <h1 className="text-2xl capitalize font-bold mx-10">shopping cart</h1>
@@ -34,7 +53,7 @@ const CartItmes = () => {
                 </div>
                 <div className="capitalize col-span-3 space-y-3 ">
                   <div className="flex justify-between mr-8">
-                    <h1 className="text-2xl font-md tracking-wide">
+                    <h1 className="text-xl font-bold font-md tracking-wide">
                       {item.name}
                     </h1>
                     <button onClick={() => onRemove(item)}>
@@ -42,7 +61,7 @@ const CartItmes = () => {
                     </button>
                   </div>
 
-                  <h3 className="text-lg font-bold tracking-wide text-zinc-500">
+                  <h3 className="text-md font-bold tracking-wide text-zinc-500">
                     {item.details}
                   </h3>
                   <h3 className="text-lg font-bold tracking-wide ">
@@ -86,7 +105,7 @@ const CartItmes = () => {
               <p>Sub total </p>
               <p>${totalPrice}</p>
             </div>
-            <button className="bg-zinc-900 text-white py-2 px-4 w-full font-bold">
+            <button className="bg-zinc-900 text-white py-2 px-4 w-full font-bold" onClick={handleCheckout}>
               Process to Checkout
             </button>
           </div>
