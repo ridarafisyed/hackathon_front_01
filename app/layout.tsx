@@ -50,7 +50,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <Toaster />
               <main className="relative flex min-h-screen flex-col gap-5">
                 <SiteHeader />
-                <div className="flex-1">{children}</div>
+                <div className=" flex-1">{children}</div>
                 <Footer />
               </main>
               <TailwindIndicator />

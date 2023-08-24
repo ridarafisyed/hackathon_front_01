@@ -4,14 +4,14 @@ import Link from "next/link"
 
 const Promotions = () => {
   return (
-    <section className="container mt-5 mb-5">
+    <section className="container md: mt-5 mb-5">
       <p className="text-blue-600  dark:text-blue-400 font-extrabold uppercase text-xs tracking-wide text-center">
         Promotions
       </p>
       <h1 className="font-extrabold text-4xl text-center py-3">
         Our Promotions Events
       </h1>
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid lg:grid-cols-4 md:grid-cols-1 gap-4">
         <div className="col-span-2 gap-3">
           <div className=" bg-gray-300 dark:bg-gray-800 mb-4 flex">
             <div className="p-14">
@@ -20,12 +20,13 @@ const Promotions = () => {
               </h1>
               <p className="text-lg">For the summer season</p>
             </div>
+            <div className="hidden xl:block ">
             <Image
               src="/asserts/event1.png"
               height={150}
               width={300}
               alt="event one"
-            />
+            /></div>
           </div>
 
           <div className="bg-zinc-900 text-white text-center px-8 py-10">

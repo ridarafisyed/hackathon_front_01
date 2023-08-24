@@ -3,22 +3,24 @@ import Image from "next/image"
 
 const Features = () => {
   return (
-    <div className="container flex my-20 py-20 bg-slate-50 dark:bg-zinc-900 justify-center">
-      <div className="relative my-5 py-5  -z-1 ">
-        <h1 className="text-8xl font-semibold z-10 text-gray-200 dark:text-zinc-800  text-left">
-          Different
-          <br /> from <br />
-          others
-        </h1>
-      </div>
-      <div className="relative  -z-10">
-        <h1 className="text-8xl font-semibold z-10 text-zinc-800 dark:text-zinc-200 top-1/2 text-left">
-          Unique and Authentic Vintage Designer Jewellery
-        </h1>
+    <div className="container flex md:flex-none my-20 py-20 bg-slate-50 dark:bg-zinc-900 justify-center">
+      <div className="xl:flex hidden relative z-0">
+        <div className="hidden xl:block my-5 py-5  z-1">
+          <h1 className=" text-8xl font-semibold z-10 text-gray-200 dark:text-zinc-800  text-left">
+            Different
+            <br /> from <br />
+            others
+          </h1>
+        </div>
+        <div className=" hidden xl:block">
+          <h1 className="text-8xl font-semibold z-10 text-gray-200 dark:text-zinc-200 top-1/2 text-left">
+            Unique and Authentic Vintage Designer Jewellery
+          </h1>
+        </div>
       </div>
 
-      <div className="absolute container space-x-10 grid grid-cols-4 justify-center items-center">
-        {/* */}
+      <div className="xl:absolute container space-x-10 grid xl:grid-cols-4 lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-1  justify-center items-center">
+       
         <div className="space-y-10 ">
           <div className=" space-y-3">
             <h3 className="font-semibold text-lg">

@@ -15,8 +15,8 @@ export function SiteHeader() {
   const { totalQuantities } = useStateContext()
  const [navbar, setNavbar] = useState(false);
   return (
-    <div>
-      <nav className="w-full bg-black text-white fixed top-0 left-0 right-0 z-10">
+    <div className="bp-10">
+      <nav className="w-full bg-white text-black shadow-md top-0 left-0 right-0 ">
         <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
           <div>
             <div className="flex items-center justify-between py-3 md:py-5 md:block">
@@ -31,7 +31,7 @@ export function SiteHeader() {
               {/* HAMBURGER BUTTON FOR MOBILE */}
               <div className="md:hidden">
                 <button
-                  className="p-2 text-white rounded-md outline-none focus:border-gray-400 focus:border"
+                  className="p-2 text-black rounded-md outline-none focus:border-gray-400 focus:border"
                   onClick={() => setNavbar(!navbar)}
                 >
                   {navbar ? (
@@ -43,19 +43,6 @@ export function SiteHeader() {
               </div>
             </div>
           </div>
-          {/* <div className="flex float-right">
-            <Link href={"/cart"} rel="noreferrer">
-                <div className="relative p-2  ">
-                  <div className="static">
-                    <ShoppingCart />
-                    <span className="bg-red-700  text-white absolute rounded-full -top-1 -right-1 text-xs py-1 px-2">
-                      {totalQuantities}
-                    </span>
-                  </div>
-                </div>
-              </Link>
-              <ThemeToggle />
-          </div> */}
           
           <div className="">
             <div
@@ -70,14 +57,14 @@ export function SiteHeader() {
                     {siteConfig.mainNav?.map(
                       (item, index) =>
                         item.href && (
-                          <li className=" text-md text-white py-2 md:px-3 text-center border-b-2 md:border-b-0  hover:bg-gray-900  border-gray-900  md:hover:text-gray-600 md:hover:bg-transparent">
+                          <li className=" text-md text-black py-2 md:px-3 text-center border-b-2 md:border-b-0  hover:bg-gray-900  border-gray-900  md:hover:text-gray-600 md:hover:bg-transparent">
                             <Link href={item.href} onClick={() => setNavbar(!navbar)}>
                               {item.title}
                             </Link>
                           </li>
                         )
                     )}
-                    <li className="text-md text-white py-2 md:px-3 text-center border-b-2 md:border-b-0  hover:bg-gray-900  border-gray-900  md:hover:text-gray-600 md:hover:bg-transparent">
+                    <li className="text-md text-black py-2 md:px-3 text-center border-b-2 md:border-b-0  hover:bg-gray-900  border-gray-900  md:hover:text-gray-600 md:hover:bg-transparent">
                       <Link href={"/cart"} rel="noreferrer">
                         <div className="relative p-2  ">
                           <div className="static">
@@ -89,7 +76,7 @@ export function SiteHeader() {
                         </div>
                       </Link>
                     </li>
-                    <li className="text-md text-white py-2 md:px-3 text-center border-b-2 md:border-b-0  hover:bg-gray-900  border-gray-900  md:hover:text-gray-600 md:hover:bg-transparent">
+                    <li className="text-md text-black py-2 md:px-3 text-center border-b-2 md:border-b-0  hover:bg-gray-900  border-gray-900  md:hover:text-gray-600 md:hover:bg-transparent">
                       <ThemeToggle/>
                     </li>
                     </> 

@@ -1,6 +1,7 @@
 import React from "react"
 import Link from "next/link"
 import { urlForImage } from "@/sanity/lib/image"
+import Image from "next/image"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
@@ -14,7 +15,8 @@ import {
 
 const ProductItems = ({ products }: any) => {
   return (
-    <div className="grid grid-cols-3">
+    <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 p-2">
+
       {products.map((product: any, index: number) => (
         <Link href={`/products/${product.slug}`} key={index}>
           <Card className="hover:scale-100 transition">
