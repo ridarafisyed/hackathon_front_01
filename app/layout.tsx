@@ -2,7 +2,7 @@ import "@/styles/globals.css"
 import { Metadata } from "next"
 import { StateContextProvider } from "@/context/StateContext"
 import { Toast, Toaster } from "react-hot-toast"
-// import {ClerkProvider} from '@clerk/clerk-js'
+import { ClerkProvider } from '@clerk/nextjs'
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
@@ -34,7 +34,7 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <>
+    <ClerkProvider>
 
       <html lang="en" suppressHydrationWarning>
         <head />
@@ -60,6 +60,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
         </body>
       </html> 
 
-    </>
+    </ClerkProvider>
   )
 }

@@ -1,4 +1,5 @@
 "use client"
+
 import React, { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
@@ -23,21 +24,18 @@ type Props = {
 }
 
 const ProductDetailPage = ({ product, products }: Props) => {
-const [quantity, setQuantity] = useState(0)
-  const handleAddTOCart =async ()=>{
-    const res = fetch("/api/cart/", {
-      method: "POST",
-      body: JSON.stringify({
-        product_id: product._id,
-        quantity: quantity,
-      })
-    })
-  }
+  const { incQty, decQty, qty, onAdd} = useStateContext()
+
+  const handleAddTOCart = () =>{
+    onAdd(product, qty)
+
+  } 
 
   return (
     <div className="container">
-      <div className=" flex flex-1 gap-5 ">
+      <div className=" grid xl:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-1 "> 
         <div className="">
+          <div className="hidden xl:block">
           <Image
             src={product.image}
             alt={product.name}
@@ -45,7 +43,6 @@ const [quantity, setQuantity] = useState(0)
             width={100}
           />
         </div>
-        <div className="">
           <Image
             src={product.image}
             alt={product.name}
@@ -63,7 +60,7 @@ const [quantity, setQuantity] = useState(0)
               Select size
             </h1>
             <div className="flex flex-1 gap-3">
-              <button className="uppercase rounded-md bg-zinc-300 dark:bg-zinc-300 py-2 px-2">
+              <button className="uppercase rounded-md bg-zinc-300 py-2 px-2">
                 xs
               </button>
               <button className="uppercase rounded-md ">s</button>
@@ -84,15 +81,15 @@ const [quantity, setQuantity] = useState(0)
               </span>
             </h3>
             <button
-              onClick={()=> setQuantity(quantity-1)}
-              className="uppercase rounded-md bg-zinc-300 dark:bg-zinc-800 px-4 py-1"
+              onClick={decQty}
+              className="uppercase rounded-md bg-zinc-300  px-4 py-1"
             >
               -
             </button>
 
-            <p className="font-semibold">{quantity}</p>
+            <p className="font-semibold">{qty}</p>
             <button
-              onClick={()=> setQuantity(quantity+1)}
+              onClick={incQty}
               className="uppercase rounded-md bg-zinc-300 px-4 py-1"
             >
               +
@@ -100,13 +97,14 @@ const [quantity, setQuantity] = useState(0)
           </div>
           <div className="flex gap-3">
             <button
-              onClick={() => handleAddTOCart()}
-              className="bg-white dark:bg-zinc-800  text-black dark:text-white border border-black   py-2 px-4"
+              onClick={handleAddTOCart}
+              className=" py-2 px-4 bg-white border border-black  dark:bg-zinc-800"
             >
               Add to cart
             </button>
             <button
-              className=" bg-black dark:bg-zinc-300 text-white  py-2 px-4"
+              // onClick={() => onAdd(product, qty)}
+              className=" py-2 px-4 bg-black text-white dark:bg-zinc-800"
             >
               Add to Wish List
             </button>

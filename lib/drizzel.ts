@@ -1,33 +1,33 @@
+import { sql } from "@vercel/postgres";
+import { pgTable, varchar, serial, integer } from "drizzle-orm/pg-core";
 import { drizzle } from 'drizzle-orm/vercel-postgres';
-import { sql } from '@vercel/postgres';
-import {
-  pgTable,
-  serial,
-  varchar,
-    integer,
-  timestamp,
-  uniqueIndex,
-} from 'drizzle-orm/pg-core';
+import { createInsertSchema, createSelectSchema, } from 'drizzle-zod';
+import { z } from "zod"
 
- 
-// Use this object to send drizzle queries to your DB
-export const db = drizzle(sql);
-// Create a pgTable that maps to a table in your DB
-export const cartTable = pgTable(
-  'cart',
-  {
+export const cartTable = pgTable("cart", {
     id: serial('id').primaryKey(),
-    user_id: varchar('user_id',{
-        length:255
+    product_id: varchar("productid", {
+        length: 255
     }).notNull(),
-    product_id: varchar("porduct_id",{
-        length:255
+    user_id: varchar("userid", {
+        length: 255
     }).notNull(),
-    quantity: integer('quantity').notNull(), 
-  }
-);
- 
-// export const getExampleTable = async () => {
-//   const selectResult = await db.select().from(ExampleTable);
-//   console.log('Results', selectResult);
-// };
+    quantity: integer('quantity').notNull()
+})
+
+export const insertSchema = createInsertSchema(cartTable, {
+    // Other fields in the schema
+    user_id: () => z.string().optional()
+});
+
+export const updateSchema = createInsertSchema(cartTable, {
+    // Other fields in the schema
+    user_id: () => z.string().optional(),
+    product_id: () => z.string().optional(),
+    id: () => z.number().refine(value => value !== undefined, {
+        message: "id is required",
+        path: ["id"],
+    }),
+})
+
+export const db = drizzle(sql);

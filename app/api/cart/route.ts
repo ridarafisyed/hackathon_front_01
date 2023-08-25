@@ -4,13 +4,18 @@ import {db, cartTable} from "@/lib/drizzel"
 import {v4 } from "uuid"
 
 import { cookies } from "next/headers"
+import { eq } from "drizzle-orm"
 
 
 
-export  const GET = async (request :Request) =>{
+export  const GET = async (request :NextRequest) =>{
+    const user_id = request.nextUrl.searchParams.get("user_id") as string
+    if (!user_id){
+        return NextResponse.json({message:"something went wrong"})
+    }
     
     try{
-        const res = await db.select().from(cartTable)
+        const res = await db.select().from(cartTable).where(eq(cartTable.user_id, user_id ))
         return NextResponse.json({res})
     }catch(error){
 
@@ -18,11 +23,14 @@ export  const GET = async (request :Request) =>{
     }
 }
 
-export  const POST = async (request :Request) =>{
+// adding data to
+export const POST = async (request :NextRequest) =>{
     const user_id = v4()
     const req= await request.json()
     const setCookie = cookies();
-    if(!cookies().has("user_id")){
+    const isUserId = setCookie.get("user_id")
+    
+    if(!isUserId){
         setCookie.set("user_id",user_id)
     }
     
@@ -32,7 +40,7 @@ export  const POST = async (request :Request) =>{
             quantity: req.quantity,
             user_id:setCookie.get("user_id")?.value as string,
 
-        })
+        }).returning();
         return NextResponse.json({res})
     }catch(error){
 

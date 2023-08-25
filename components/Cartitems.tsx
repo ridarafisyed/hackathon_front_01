@@ -17,6 +17,8 @@ const CartItmes = () => {
     toggleCartItemQuantity,
     onRemove,
   } = useStateContext()
+
+  
   const handleCheckout=async (params:any) => {
     const stripe = await getStripe();
     const response = await fetch('/api/stripe',{
