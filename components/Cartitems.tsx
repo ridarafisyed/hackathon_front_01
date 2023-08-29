@@ -6,7 +6,7 @@ import Link from "next/link"
 import { useStateContext } from "@/context/StateContext"
 import { Minus, Plus, Trash2 } from "lucide-react"
 
-import getStripe from "@/lib/stripe"
+import getStipePromise from "@/lib/stripe"
 import { toast } from "react-hot-toast"
 
 const CartItmes = () => {
@@ -18,24 +18,22 @@ const CartItmes = () => {
     onRemove,
   } = useStateContext()
 
-  
-  const handleCheckout=async (params:any) => {
-    const stripe = await getStripe();
-    const response = await fetch('/api/stripe',{
-      method:'POST',
-      headers:{
-        'Content-Type': 'application/json',
-      },
+  const handleCheckout = async () => {
+    const stripe = await getStipePromise();
+    const response = await fetch("/api/stripe-session/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      cache: "no-cache",
       body: JSON.stringify(cartItems),
-      
-    })
-    if (response.status === 500){
-      return 
+    });
+
+    const data = await response.json();
+    if (data.session) {
+      stripe?.redirectToCheckout({ sessionId: data.session.id });
     }
-    const data = await response.json()
-    toast.loading('Redirecting...')
-    stripe.redirectToCheckout({sessionId: data.id});
-  }
+  };
+
+  
   return (
     <section className="container  p-10">
       <h1 className="text-2xl capitalize font-bold mx-10">shopping cart</h1>
