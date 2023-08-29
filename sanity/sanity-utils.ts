@@ -10,6 +10,7 @@ export async function getProducts(): Promise<Product[]> {
     details,
     "image": image[0].asset->url,
     price,
+    category,
     "slug": slug.current,
     quantity,
     _createdAt
@@ -23,6 +24,7 @@ export async function getProduct(slug: string): Promise<Product> {
     details,
     "image": image[0].asset->url,
     price,
+    category,
     "slug": slug.current,
     quantity,
     _createdAt
@@ -32,7 +34,7 @@ export async function getProduct(slug: string): Promise<Product> {
     }
   )
 }
-export async function getGenderProducts(gender: string): Promise<Product> {
+export async function getGenderProducts(gender: string): Promise<Product[]> {
   return client.fetch(
     groq`*[_type == "product" && gender == $gender]{
     name,
@@ -40,12 +42,32 @@ export async function getGenderProducts(gender: string): Promise<Product> {
     "image": image[0].asset->url,
     price,
     gender,
+    category,
     "slug": slug.current,
     quantity,
     _createdAt
   }`,
     {
       gender,
+    }
+  )
+}
+
+export async function getCategoryProducts(category: string): Promise<Product[]> {
+  return client.fetch(
+    groq`*[_type == "product" && category == $category]{
+    name,
+    details,
+    "image": image[0].asset->url,
+    price,
+    gender,
+    category,
+    "slug": slug.current,
+    quantity,
+    _createdAt
+  }`,
+    {
+      category,
     }
   )
 }

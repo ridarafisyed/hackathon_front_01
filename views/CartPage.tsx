@@ -20,7 +20,6 @@ const CartPage = () => {
   return (
     <>
       <CartItems />
-      {/* <Wishlist /> */}
     </>
   )
 }

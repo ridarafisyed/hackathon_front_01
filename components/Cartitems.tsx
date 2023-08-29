@@ -19,27 +19,28 @@ const CartItmes = () => {
   } = useStateContext()
 
   const handleCheckout = async () => {
-    const stripe = await getStipePromise();
-    const response = await fetch("/api/stripe-session/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      cache: "no-cache",
-      body: JSON.stringify(cartItems),
-    });
+    // const stripe = await getStipePromise();
+    // const response = await fetch("/api/stripe-session/", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   cache: "no-cache",
+    //   body: JSON.stringify(cartItems),
+    // });
 
-    const data = await response.json();
-    if (data.session) {
-      stripe?.redirectToCheckout({ sessionId: data.session.id });
-    }
+    // const data = await response.json();
+    // if (data.session) {
+    //   stripe?.redirectToCheckout({ sessionId: data.session.id });
+    // }
+    console.log("click on checkout")
   };
 
   
   return (
-    <section className="container  p-10">
+    <section className="container p-10">
       <h1 className="text-2xl capitalize font-bold mx-10">shopping cart</h1>
       {cartItems.length > 0 ? (
         <div className="flex gap-3 m-10 justify-center items-center">
-          <div className="grid grid-cols-4 gap-3">
+          <div className="grid md:grid-cols-3 gap-3">
             {cartItems?.map((item, index) => (
               <>
                 <div className="justify-items-center">
@@ -51,7 +52,7 @@ const CartItmes = () => {
                     height={200}
                   />
                 </div>
-                <div className="capitalize col-span-3 space-y-3 ">
+                <div className="capitalize md:col-span-2 space-y-3 ">
                   <div className="flex justify-between mr-8">
                     <h1 className="text-xl font-bold font-md tracking-wide">
                       {item.name}
@@ -94,8 +95,7 @@ const CartItmes = () => {
               </>
             ))}
           </div>
-
-          <div className="bg-gray-100 dark:bg-gray-600 p-10 space-y-4 rounded-lg">
+          <div className="bg-gray-100 dark:bg-gray-600 p-10 space-y-4 rounded-lg w-full">
             <h1 className="text-xl font-extrabold capitalize">Order Summary</h1>
             <div className="flex justify-between">
               <p>Quantity </p>
@@ -113,7 +113,7 @@ const CartItmes = () => {
       ) : (
         <p className="text-md capitalize m-10">
           Your Cart is empty.{" "}
-          <Link href={"/"} className="underline">
+          <Link href={"/products"}  className="underline">
             Continue Shopping
           </Link>
         </p>

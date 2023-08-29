@@ -6,7 +6,7 @@ import Link from "next/link"
 import { useStateContext } from "@/context/StateContext"
 import { urlForImage } from "@/sanity/lib/image"
 import product from "@/sanity/product"
-
+import { getCategoryProducts } from "@/sanity/sanity-utils"
 import { Product } from "@/types/product"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
@@ -28,21 +28,20 @@ const ProductDetailPage = ({ product, products }: Props) => {
 
   const handleAddTOCart = () =>{
     onAdd(product, qty)
-
+ 
   } 
-
   return (
-    <div className="container">
-      <div className=" grid xl:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-1 "> 
+    <div className="container   ">
+      <div className=" grid xl:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-x-2"> 
         <div className="">
           <div className="hidden xl:block">
-          <Image
-            src={product.image}
-            alt={product.name}
-            height={100}
-            width={100}
-          />
-        </div>
+            <Image
+              src={product.image}
+              alt={product.name}
+              height={100}
+              width={100}
+            />
+          </div>
           <Image
             src={product.image}
             alt={product.name}

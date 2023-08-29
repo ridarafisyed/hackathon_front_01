@@ -40,8 +40,14 @@ console.log(userId)
                   {navbar ? (
                     <X/>
                   ) : (
-                    <Menu/>
-                  )}
+                    <div className="flex space-x-2">
+                      <Menu/>
+                      <div>
+                      {userId ? 
+                        <UserButton afterSignOutUrl="/"/>: <Link href="/sign-in" rel="sign in link"><LogIn/></Link>}
+                        </div>
+                    </div>
+                            )}
                 </button>
               </div>
             </div>
@@ -90,7 +96,7 @@ console.log(userId)
             </div>
             
           </div>
-           <div >
+           <div className="hidden md:block">
             {userId ? 
               <UserButton afterSignOutUrl="/"/>: <Link href="/sign-in" rel="sign in link"><LogIn/></Link>}
            </div>
