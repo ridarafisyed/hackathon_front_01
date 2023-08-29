@@ -2,18 +2,23 @@
 import React, {useState} from "react"
 import Link from "next/link"
 import { useStateContext } from "@/context/StateContext"
-import { ShoppingCart } from "lucide-react"
+import { LogIn, ShoppingCart } from "lucide-react"
+import { User } from 'lucide-react';
 import { X } from 'lucide-react';
 import { Menu } from 'lucide-react';
 import { siteConfig } from "@/config/site"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Icons } from "@/components/icons"
+import { UserButton, useAuth } from "@clerk/nextjs";
+
 
 
 
 export function SiteHeader() {
+const {userId} = useAuth()
+console.log(userId)
   const { totalQuantities } = useStateContext()
- const [navbar, setNavbar] = useState(false);
+  const [navbar, setNavbar] = useState(false);
   return (
     <div className="bp-10">
       <nav className="w-full bg-white text-black dark:bg-black dark:text-white shadow-md top-0 left-0 right-0">
@@ -25,8 +30,6 @@ export function SiteHeader() {
                 <Icons.logo className="h-6 w-6" />
                 <span className="inline-block font-bold">{siteConfig.name}</span>
               </Link>
-
-              
               
               {/* HAMBURGER BUTTON FOR MOBILE */}
               <div className="md:hidden">
@@ -87,7 +90,10 @@ export function SiteHeader() {
             </div>
             
           </div>
-           
+           <div >
+            {userId ? 
+              <UserButton afterSignOutUrl="/"/>: <Link href="/sign-in" rel="sign in link"><LogIn/></Link>}
+           </div>
            
         </div>
       </nav>

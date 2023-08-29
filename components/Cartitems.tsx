@@ -6,7 +6,7 @@ import Link from "next/link"
 import { useStateContext } from "@/context/StateContext"
 import { Minus, Plus, Trash2 } from "lucide-react"
 
-import getStripe from "@/lib/getStripe"
+import getStripe from "@/lib/stripe"
 import { toast } from "react-hot-toast"
 
 const CartItmes = () => {

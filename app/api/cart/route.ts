@@ -1,21 +1,20 @@
 import { NextRequest, NextResponse } from "next/server"
 import {db, cartTable} from "@/lib/drizzel"
-
+import { auth } from '@clerk/nextjs';
 import {v4 } from "uuid"
-
+import { currentUser } from '@clerk/nextjs';
 import { cookies } from "next/headers"
 import { eq } from "drizzle-orm"
 
 
 
 export  const GET = async (request :NextRequest) =>{
-    const user_id = request.nextUrl.searchParams.get("user_id") as string
-    if (!user_id){
+    const user = await currentUser();
+    if (!user){
         return NextResponse.json({message:"something went wrong"})
     }
-    
     try{
-        const res = await db.select().from(cartTable).where(eq(cartTable.user_id, user_id ))
+        const res = await db.select().from(cartTable).where(eq(cartTable.user_id, user.id ))
         return NextResponse.json({res})
     }catch(error){
 
@@ -25,23 +24,23 @@ export  const GET = async (request :NextRequest) =>{
 
 // adding data to
 export const POST = async (request :NextRequest) =>{
-    const user_id = v4()
+    const { userId } : { userId: string | null } = auth();
     const req= await request.json()
-    const setCookie = cookies();
-    const isUserId = setCookie.get("user_id")
+
     
-    if(!isUserId){
-        setCookie.set("user_id",user_id)
-    }
+    
     
     try{
-        const res = await db.insert(cartTable).values({
+        if(userId){
+            const res = await db.insert(cartTable).values({
             product_id: req.product_id,
             quantity: req.quantity,
-            user_id:setCookie.get("user_id")?.value as string,
+            user_id:userId,
 
         }).returning();
         return NextResponse.json({res})
+        }
+        
     }catch(error){
 
     }

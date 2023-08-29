@@ -26,8 +26,7 @@ const HeroSection = () => {
         </div>
         <div className="flex gap-4 px-10 mb-10">
           <Link
-            href={siteConfig.links.docs}
-            target="_blank"
+            href="/products"
             rel="noreferrer"
             // className={buttonVariants()}
             className="flex gap-2 bg-black text-white px-7 py-5 font-extrabold"

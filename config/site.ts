@@ -21,6 +21,7 @@ export const siteConfig = {
       title: "All Products",
       href: "/products",
     },
+    
   ],
   links: {
     twitter: "https://twitter.com/ridarafisyed",
