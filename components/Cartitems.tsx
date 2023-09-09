@@ -3,20 +3,15 @@
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { useStateContext } from "@/context/StateContext"
 import { Minus, Plus, Trash2 } from "lucide-react"
-
+// import {CartState} from "@/redux/cart.slice"
 import getStipePromise from "@/lib/stripe"
 import { toast } from "react-hot-toast"
+import { useAppDispatch, useAppSelector } from "@/store/store"
 
 const CartItmes = () => {
-  const {
-    totalPrice,
-    totalQuantities,
-    cartItems,
-    toggleCartItemQuantity,
-    onRemove,
-  } = useStateContext()
+  const cartItems = useAppSelector(state=>state.cart)
+  const dispatch = useAppDispatch()
 
   const handleCheckout = async () => {
     // const stripe = await getStipePromise();
@@ -38,7 +33,7 @@ const CartItmes = () => {
   return (
     <section className="container p-10">
       <h1 className="text-2xl capitalize font-bold mx-10">shopping cart</h1>
-      {cartItems.length > 0 ? (
+      {/* {cartItems != null ? (
         <div className="flex gap-3 m-10 justify-center items-center">
           <div className="grid md:grid-cols-3 gap-3">
             {cartItems?.map((item, index) => (
@@ -117,7 +112,7 @@ const CartItmes = () => {
             Continue Shopping
           </Link>
         </p>
-      )}
+      )}  */}
     </section>
   )
 }

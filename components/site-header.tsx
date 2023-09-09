@@ -1,7 +1,7 @@
 "use client"
 import React, {useState} from "react"
 import Link from "next/link"
-import { useStateContext } from "@/context/StateContext"
+
 import { LogIn, ShoppingCart } from "lucide-react"
 import { User } from 'lucide-react';
 import { X } from 'lucide-react';
@@ -10,14 +10,18 @@ import { siteConfig } from "@/config/site"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Icons } from "@/components/icons"
 import { UserButton, useAuth } from "@clerk/nextjs";
+import { useAppSelector } from "@/store/store";
+import {  selectTotalItems,
+  selectTotalPrice, } from "@/store/cart.slice";
+import { useSelector } from "react-redux";
 
 
 
 
 export function SiteHeader() {
-const {userId} = useAuth()
-console.log(userId)
-  const { totalQuantities } = useStateContext()
+  const {userId} = useAuth()
+  // console.log(userId)
+  const totalItems = useSelector(selectTotalItems);
   const [navbar, setNavbar] = useState(false);
   return (
     <div className="bp-10">
@@ -79,7 +83,7 @@ console.log(userId)
                           <div className="static">
                             <ShoppingCart />
                             <span className="bg-red-700  text-white absolute rounded-full -top-1 -right-1 text-xs py-1 px-2">
-                              {totalQuantities}
+                              {totalItems}
                             </span>
                           </div>
                         </div>

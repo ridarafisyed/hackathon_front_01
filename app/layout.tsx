@@ -1,6 +1,6 @@
 import "@/styles/globals.css"
 import { Metadata } from "next"
-import { StateContextProvider } from "@/context/StateContext"
+// import { StateContextProvider } from "@/context/StateContext"
 import { Toast, Toaster } from "react-hot-toast"
 import { ClerkProvider, auth } from '@clerk/nextjs'
 import { siteConfig } from "@/config/site"
@@ -10,6 +10,7 @@ import Footer from "@/components/Footer"
 import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
+import Providers from "@/components/Providers"
 
 
 export const metadata: Metadata = {
@@ -36,8 +37,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   const userId = auth()
   return (  
-    <ClerkProvider >
-
+    <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <head />
         <body
@@ -46,19 +46,19 @@ export default function RootLayout({ children }: RootLayoutProps) {
             fontSans.variable
           )}
         >
-          <StateContextProvider>
+          <Providers>
             
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
               <Toaster />
               <main className="relative flex min-h-screen flex-col gap-5">
                 <SiteHeader />
-                <div className=" flex-1">{children}</div>
+                <div className="flex-1">{children}</div>
                 <Footer />
               </main>
               <TailwindIndicator />
             </ThemeProvider>
            
-          </StateContextProvider>
+          </Providers>
         </body>
       </html> 
 

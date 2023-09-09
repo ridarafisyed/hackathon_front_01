@@ -3,20 +3,22 @@
 import React, { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { useStateContext } from "@/context/StateContext"
+
 import { urlForImage } from "@/sanity/lib/image"
 import product from "@/sanity/product"
 import { getCategoryProducts } from "@/sanity/sanity-utils"
 import { Product } from "@/types/product"
+import toast from "react-hot-toast";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
   Card,
-  CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { useAuth } from "@clerk/nextjs"
+import { useAppDispatch } from "@/store/store"
+import { incrementItem, decrementItem, addToCart } from "@/store/cart.slice"
 
 type Props = {
   product: Product
@@ -24,12 +26,32 @@ type Props = {
 }
 
 const ProductDetailPage = ({ product, products }: Props) => {
-  const { incQty, decQty, qty, onAdd} = useStateContext()
+  const dispatch = useAppDispatch()
 
-  const handleAddTOCart = () =>{
-    onAdd(product, qty)
- 
-  } 
+  const {userId} = useAuth() // getting the logged in user
+  
+  const [quantity, setQunatity] = useState(0)
+  
+
+  async function handleAddTOCart() {
+    console.log("clicked on add to cart")
+    dispatch(addToCart({ product:{id: product._id, imagePath:product.image, price:product.price, name: product.name}, quantity: quantity }));
+
+    toast.success("Product added");
+  }
+
+  const handleDecrement =() =>{
+    setQunatity(quantity - 1);
+    dispatch(decrementItem(product._id));
+  }
+
+    const handleIncrement =() =>{
+    setQunatity(quantity + 1);
+    dispatch(incrementItem(product._id))
+  }
+  
+  
+  
   return (
     <div className="container   ">
       <div className=" grid xl:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-x-2"> 
@@ -80,15 +102,15 @@ const ProductDetailPage = ({ product, products }: Props) => {
               </span>
             </h3>
             <button
-              onClick={decQty}
+              onClick={handleDecrement}
               className="uppercase rounded-md bg-zinc-300  px-4 py-1"
             >
               -
             </button>
 
-            <p className="font-semibold">{qty}</p>
+            <p className="font-semibold">{quantity}</p>
             <button
-              onClick={incQty}
+              onClick={handleIncrement}
               className="uppercase rounded-md bg-zinc-300 px-4 py-1"
             >
               +
