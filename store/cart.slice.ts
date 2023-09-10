@@ -76,6 +76,7 @@ export const selectTotalItems = createSelector(
   (state: { cart: CartState }) => state.cart.items,
   (items) => items.reduce((total, item) => total + item.quantity, 0)
 );
+export const selectCartItems = (state: { cart: CartState }) => state.cart.items;
 
 export const selectTotalPrice = createSelector(
   (state: { cart: CartState }) => state.cart.items,

@@ -27,33 +27,35 @@ type Props = {
 
 const ProductDetailPage = ({ product, products }: Props) => {
   const dispatch = useAppDispatch()
-
   const {userId} = useAuth() // getting the logged in user
-  
   const [quantity, setQunatity] = useState(0)
   
 
   async function handleAddTOCart() {
-    console.log("clicked on add to cart")
-    dispatch(addToCart({ product:{id: product._id, imagePath:product.image, price:product.price, name: product.name}, quantity: quantity }));
+    console.log("clicked on add to cart", product.name)
+    try{
+      dispatch(addToCart({ product:{id: product._id, imagePath:product.image, price:product.price, name: product.name}, quantity: quantity }));
+      toast.success("Product added");
 
-    toast.success("Product added");
+    }catch(error){
+      console.log("Something went wrong", error)
+      toast.error("Something went wrong");
+    }
+   
   }
 
   const handleDecrement =() =>{
     setQunatity(quantity - 1);
-    dispatch(decrementItem(product._id));
   }
 
     const handleIncrement =() =>{
     setQunatity(quantity + 1);
-    dispatch(incrementItem(product._id))
   }
   
   
   
   return (
-    <div className="container   ">
+    <div className="container">
       <div className=" grid xl:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-x-2"> 
         <div className="">
           <div className="hidden xl:block">
@@ -81,7 +83,7 @@ const ProductDetailPage = ({ product, products }: Props) => {
               Select size
             </h1>
             <div className="flex flex-1 gap-3">
-              <button className="uppercase rounded-md bg-zinc-300 py-2 px-2">
+              <button className=" bg-zinc-300 dark:bg-zinc-800 uppercase rounded-md py-2 px-2">
                 xs
               </button>
               <button className="uppercase rounded-md ">s</button>
@@ -103,7 +105,7 @@ const ProductDetailPage = ({ product, products }: Props) => {
             </h3>
             <button
               onClick={handleDecrement}
-              className="uppercase rounded-md bg-zinc-300  px-4 py-1"
+              className="bg-zinc-300 dark:bg-zinc-800 uppercase rounded-md   px-4 py-1"
             >
               -
             </button>
@@ -111,7 +113,7 @@ const ProductDetailPage = ({ product, products }: Props) => {
             <p className="font-semibold">{quantity}</p>
             <button
               onClick={handleIncrement}
-              className="uppercase rounded-md bg-zinc-300 px-4 py-1"
+              className="bg-zinc-300 dark:bg-zinc-800 uppercase rounded-md  px-4 py-1"
             >
               +
             </button>
@@ -119,13 +121,12 @@ const ProductDetailPage = ({ product, products }: Props) => {
           <div className="flex gap-3">
             <button
               onClick={handleAddTOCart}
-              className=" py-2 px-4 bg-white border border-black  dark:bg-zinc-800"
+              className=" bg-purple-700 text-zinc-100 dark:bg-purple-700 border capitalize font-bold py-2 px-4 rounded-md border-zinc-700  "
             >
               Add to cart
             </button>
             <button
-              // onClick={() => onAdd(product, qty)}
-              className=" py-2 px-4 bg-black text-white dark:bg-zinc-800"
+              className="bg-zinc-200 text-zinc-600 dark:bg-zinc-600 border capitalize font-bold py-2 px-4 rounded-md "
             >
               Add to Wish List
             </button>

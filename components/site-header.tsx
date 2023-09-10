@@ -10,9 +10,7 @@ import { siteConfig } from "@/config/site"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Icons } from "@/components/icons"
 import { UserButton, useAuth } from "@clerk/nextjs";
-import { useAppSelector } from "@/store/store";
-import {  selectTotalItems,
-  selectTotalPrice, } from "@/store/cart.slice";
+import { RootState } from "@/store/store";
 import { useSelector } from "react-redux";
 
 
@@ -20,8 +18,7 @@ import { useSelector } from "react-redux";
 
 export function SiteHeader() {
   const {userId} = useAuth()
-  // console.log(userId)
-  const totalItems = useSelector(selectTotalItems);
+  const totalItems = useSelector((state:RootState) => state.cart.items.length);
   const [navbar, setNavbar] = useState(false);
   return (
     <div className="bp-10">
