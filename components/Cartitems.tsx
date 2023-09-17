@@ -38,51 +38,53 @@ const CartItmes = () => {
   
   return (
     <section className="container p-10">
-      <h1 className="text-2xl capitalize font-bold mx-10">shopping cart</h1>
-      {cartItems.length ? (
-       <div className="p-10 grid grid-cols-3">
-          <div className="col-span-2">
+      <div className="flex gap-4">
+        <h1 className="text-2xl capitalize font-bold">shopping cart</h1>
+        {cartItems.length?   <button className="capitalize float-right font-bold bg-red-700 text-white px-2 py-1 rounded-lg" onClick={()=>dispatch(clearCart())}>Empty Cart</button>
+      : null}
+      </div>
+      
+      {/* <button className="capitalize float-right" onClick={()=>dispatch(clearCart())}>Empty Cart</button> */}
+      {cartItems.length ? (  
+       <div className="p-1 grid lg:grid-cols-3 sm: grid-cols-1 ">     
+          <div className="lg:col-span-2 ">
             {cartItems.map((item, index) =>(  // if there is items in the cart 
-              <>
-                <button className="capitalize" onClick={()=>dispatch(clearCart())}>Empty Cart</button>
-              
-                <div className="flex">
-                <div className="flex-auto grid grid-cols-4 col-span-2 gap-2">
-                
-                  <div className="">
-                    <Image src={item.product.imagePath} height={150} width={150} alt={item.product.name} />
-                  </div>
-                  <div className="col-span-2"> 
-                    <h1 className="font-semibold text-xl">{item.product.name}</h1>
-                    <p className="">{item.product.price}</p>
-
-                    <div className="inline-flex gap-3">
-                      <button
-                        onClick={()=>dispatch(decrementItem(item.product.id))}
-                        className="uppercase rounded-md bg-zinc-300  px-4 py-1 dark:bg-zinc-800"
-                      >
-                        -
-                      </button>
-
-                      <p className="font-semibold">{item.quantity}</p>
-                      <button
-                        onClick={()=>dispatch(incrementItem(item.product.id))}
-                        className="uppercase rounded-md bg-zinc-300 px-4 py-1 dark:bg-zinc-800"
-                      >
-                        +
-                      </button>
+              <div className="grid lg:grid-cols-3 sm:grid-cols-2 lg:col-span-2 gap-2 shadow-lg rounded-lg m-2 p-2">
+      
+                    <div className="image-col">
+                      <Image src={item.product.imagePath} height={150} width={150} alt={item.product.name} />
                     </div>
+                    <div className=""> 
+                      <h1 className="font-semibold text-xl">{item.product.name}</h1>
+                      <p className="">Price: ${item.product.price}</p>
+
+                      <div className="inline-flex gap-3">
+                        <button
+                          onClick={()=>dispatch(decrementItem(item.product.id))}
+                          className="uppercase rounded-md bg-zinc-300  px-4 py-1 dark:bg-zinc-800"
+                        >
+                          -
+                        </button>
+
+                        <p className="font-semibold">{item.quantity}</p>
+                        <button
+                          onClick={()=>dispatch(incrementItem(item.product.id))}
+                          className="uppercase rounded-md bg-zinc-300 px-4 py-1 dark:bg-zinc-800"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                    <div className="">
+                      <button className="float-right p-2" onClick={()=>dispatch(deleteItem(item.product.id))}><Trash2/></button><br/>
+                    </div> 
                   </div>
-                  <div className="">
-                    <button onClick={()=>dispatch(deleteItem(item.product.id))}><Trash2/></button><br/>
-                  </div> 
-                </div>
               
-                </div>
-                </>
+          
+               
                 ))}
           </div>
-          <div className="grid bg-gray-300 dark:bg-zinc-800 dark:text-zinc-300 rounded-xl items-center align-middle text-center gap-3">
+          <div className="grid bg-gray-300 dark:bg-zinc-800 dark:text-zinc-300 shadow-lg rounded-lg items-center align-middle text-center gap-3 max-h-40">
             <h1 className=" text-xl font-bold mt-4">Order Summary</h1>
             <hr/>
             
